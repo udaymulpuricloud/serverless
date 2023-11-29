@@ -18,13 +18,14 @@ export const handler = async (event, context) => {
     await downloadFile(messageObject);
     await uploadFile(messageObject);
     await sendMail(messageObject, "success");
-    await putItem(messageObject);
+    await putItem(messageObject, "success");
 
     console.log("End of handler function");
     return context.logStreamName;
   } catch (error) {
     console.error("Error in handler function: " + error.message);
     await sendMail(messageObject, "fail");
+    await putItem(messageObject, "fail");
   }
 };
 
@@ -61,7 +62,7 @@ async function uploadFile(messageObject) {
   }
 }
 
-async function putItem(messageObject) {
+async function putItem(messageObject, status) {
   const client = new DynamoDBClient({});
   const dynamo = DynamoDBDocumentClient.from(client);
 
@@ -77,7 +78,7 @@ async function putItem(messageObject) {
           submission_url: messageObject.submissionUrl,
           email_id: messageObject.emailId,
           timestamp: Date.now(),
-          mail_status: "SUCCESS",
+          mail_status: status,
         },
       })
     );
