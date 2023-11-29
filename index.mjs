@@ -166,7 +166,7 @@ async function sendMail(messageObject, status) {
         <p>Your assignment file for "${messageObject.assignmentName}" has been submitted successfully Below are the Submission details.</p>
         <p>Assignment_ID:"${messageObject.assignmentId}"<p>
         <p>Submission_ID:"${messageObject.submissionId}"<p>
-        <p>"/uploads/${messageObject.emailId}/${messageObject.assignmentId}/${messageObject.submissionId}.zip"<p>
+        <p>Location : "/uploads/${messageObject.emailId}/${messageObject.assignmentId}/${messageObject.submissionId}.zip"<p>
         <p>Thank you for your submission.</p>
         `,
     };
