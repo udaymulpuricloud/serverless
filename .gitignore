@@ -124,7 +124,9 @@ dist
 
 # yarn v2
 .yarn/cache
+*.zip
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+.DS_Store
