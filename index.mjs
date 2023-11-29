@@ -160,12 +160,12 @@ async function sendMail(messageObject, status) {
     data = {
       from: "contact@udaykiranreddy.me",
       to: messageObject.emailId,
-      subject: messageObject.assignmentName,
+      subject: "Submission Successfull-" + messageObject.assignmentName,
       html: `
         <p>Dear User,</p>
         <p>Your assignment file for "${messageObject.assignmentName}" has been submitted successfully Below are the Submission details.</p>
-        <p>"${messageObject.assignmentId}"<p>
-        <p>"${messageObject.submissionId}"<p>
+        <p>Assignment_ID:"${messageObject.assignmentId}"<p>
+        <p>Submission_ID:"${messageObject.submissionId}"<p>
         <p>"/uploads/${messageObject.emailId}/${messageObject.assignmentId}/${messageObject.submissionId}.zip"<p>
         <p>Thank you for your submission.</p>
         `,
@@ -174,12 +174,12 @@ async function sendMail(messageObject, status) {
     data = {
       from: "contact@udaykiranreddy.me",
       to: messageObject.emailId,
-      subject: "Submission Failed",
+      subject: "Submission Failed-" + messageObject.assignmentName,
       html: `
         <p>Dear User,</p>
-        <p>Your assignment submission for "${messageObject.assignmentName}"is failed ".</p>
-        <p>"${messageObject.assignmentId}"<p>
-        <p>"${messageObject.submissionId}"<p>        
+        <p>Your assignment submission for "${messageObject.assignmentName}"is failed, due to Invalid Submission URL".</p>
+        <p>Assignment_ID:"${messageObject.assignmentId}"<p>
+        <p>Submission_ID:"${messageObject.submissionId}"<p>        
         <p>Please Submit again.</p>
         `,
     };
